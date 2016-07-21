@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			var a:String="BEBO"
+			import mx.collections.ArrayCollection;
+			import mx.collections.ArrayList;
+			
+			import spark.components.DataGrid;
+			import spark.components.gridClasses.GridColumn;
+			protected function B_clickHandler(event:MouseEvent):void
+			{
+				if(V1.rowCount==1)
+				{
+				this.B.label="OBEBO"
+				var DG:DataGrid= new DataGrid;
+				var arrayCollection:ArrayCollection= new ArrayCollection;
+				var object:Object= {NAME: "Sai Konanki", allocation:"MuSigma"};
+				var object1:Object= {NAME: "Sai Konanki", allocation:"MuSigmaYes"};
+				var column1:GridColumn=new GridColumn;
+				var column2:GridColumn= new GridColumn;
+				var column:ArrayList= new ArrayList;	
+		        column1.dataField="NAME";
+				column2.dataField="allocation";
+				column.addItem(column1);
+				column.addItem(column2);
+				DG.columns=column;
+				arrayCollection.addItem(object);
+				arrayCollection.addItem(object1);
+				DG.dataProvider=arrayCollection;
+				V1.addElement(DG)
+				DG.percentHeight= 200
+				DG.width=300	}
+				else
+				V1.removeElementAt(1)	
+				
+			}
+		]]>
+	</fx:Script>
+	
+	<s:VGroup id="V1">
+		<s:Button id="B" label="@{a}" click="B_clickHandler(event)"/>
+	</s:VGroup>
+</s:WindowedApplication>
